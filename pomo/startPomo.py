@@ -7,7 +7,7 @@ pomosCount = 0
 pomodoroLaps = 0
 
 # Debug:
-multiplier = 1
+multiplier = 60
 
 shortBreakDurations = [5, 4, 3]
 longBreakDurations = [30, 22, 15]
