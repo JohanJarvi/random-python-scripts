@@ -1,6 +1,7 @@
 import time
 from datetime import date
 from pathlib import Path
+import subprocess as s
 
 pomos = []
 pomosCount = 0
@@ -56,7 +57,10 @@ while True:
         print("Here we go again! You have done " +
               str(pomodoroLaps) + " pomodoro laps so far!")
         print("    ")
-    print("Work for 25 minutes starting now!")
+
+    workString = "Work for " + str(25) + " minutes starting now!"
+    print(workString)
+    s.call(['notify-send', 'Pomodoro Counter', workString])
     showProgressBar(25)
 
     pomos.append("@")
@@ -86,12 +90,16 @@ while True:
 
     if len(pomos) != 4:
         shortBreakDuration = shortBreakDurations[levelOfProductivity - 1]
-        print("Break for " + str(shortBreakDuration) + " minutes!")
+        breakString = "Break for " + str(shortBreakDuration) + " minutes!"
+        print(breakString)
+        s.call(['notify-send', 'Pomodoro Counter', breakString])
         showProgressBar(shortBreakDuration)
         print("    ")
     else:
         longBreakDuration = longBreakDurations[levelOfProductivity - 1]
-        print("Break for " + str(longBreakDuration) + " minutes!")
+        breakString = "Break for " + str(longBreakDuration) + " minutes!"
+        print(breakString)
+        s.call(['notify-send', 'Pomodoro Counter', breakString])
         showProgressBar(longBreakDuration)
         pomos = []
         print("    ")
