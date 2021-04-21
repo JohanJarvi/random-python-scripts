@@ -2,6 +2,7 @@ import time
 from datetime import date
 from pathlib import Path
 import subprocess as s
+import sys
 
 pomos = []
 pomosCount = 0
@@ -19,12 +20,15 @@ levelOfProductivity = int(
 if levelOfProductivity > 3 or levelOfProductivity < 0:
     raise "Error! Cannot have an productivity level lower than 1 or higher than 3!"
 
-print("Starting pomodoro technique lets do this!")
-print("    ")
-
 path = Path(__file__).parent
-readFile = open(str(path) + "/pomocounts.txt", "r")
-file = open(str(path) + "/pomocounts.txt", "a")
+
+try:
+    readFile = open(str(path) + "/pomocounts.txt", "r")
+    file = open(str(path) + "/pomocounts.txt", "a")
+except:
+    print("\nError! Failed to open file pomocounts.txt.\nPlease create this file in the root directory.\n")
+    sys.exit()
+
 
 lines = readFile.read().splitlines()
 readFile.close()
@@ -35,6 +39,8 @@ else:
     if str(date.today()) not in lines:
         file.write("\n\n" + str(date.today()) + "\n")
 
+print("Starting pomodoro technique lets do this!")
+print("    ")
 
 def showProgressBar(minutesToProgress):
     progress = [" "] * minutesToProgress
