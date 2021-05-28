@@ -17,7 +17,7 @@ if (hoursStr):
                   "Don't try to be a good boy. Go on. Take your weekend.\n" +
                   "You've earnt it!")
 
-        if time_worked > fortyHoursInMinutes:
+        if time_worked >= fortyHoursInMinutes:
             print(" ")
             print('STOP RIGHT THIS INSTANT! You have already worked enough! Party time!')
 else:
